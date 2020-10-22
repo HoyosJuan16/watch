@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React , { useState,Fragment , useEffect} from 'react';
 
-function App() {
+import { Header } from './components/Header'
+import { Watch } from './pages/Watch'
+
+export const App = () => {
+  const [mode,setMode] = useState(false)
+  const [watch,setWatch] = useState(false)
+  useEffect(() => {
+    if(mode){
+      document.querySelector('.body').className = 'body body-dark'
+    }else{
+      document.querySelector('.body').className = 'body body-light'
+    }
+  })
+  const actMode = () => {
+    setMode(!mode)
+  }
+  const actWatch = () => {
+    setWatch(!watch)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Fragment>
+      <Header 
+        actMode={actMode}
+        actWatch={actWatch}
+      />
+      <Watch mode={mode} watch={watch} />
+    </Fragment>
+  )
 }
-
-export default App;

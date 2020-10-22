@@ -1,0 +1,1354 @@
+:root{
+  --sombra-dig-dark: rgba(255,255,255,0.125);  
+  --color-dig-dark: rgb(255,255,255);
+  --sombra-dig-light: rgba(9,25,33,0.1);  
+  --color-dig-light: rgb(9,25,33);
+}
+.digital{
+  box-sizing: content-box;
+  width: 500px;
+  margin: auto;
+  padding: 30px 50px;
+  border-radius: 15px;
+  position: relative;
+  border: 4px solid transparent;
+  box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+              inset 0 -15px 15px rgba(255, 255, 255, 0.05),
+              0 15px 15px rgba(0, 0, 0, 0.05),
+              inset 0 15px 15px rgba(0, 0, 0, 0.05);
+  transition: all .8s ease;
+}
+.digital.digital-dark{
+  background: #091921;
+  border-color: #091921;
+}
+.digital.digital-light{
+  background: #fff;
+  border-color: #fff;
+}
+.digital-numbers{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 5px 0px;
+}
+.digital-numbers .dot{
+  font-size: 92px;
+}
+.digital.digital-dark .digital-numbers .dot{
+  color: var(--color-dig-dark);
+}
+.digital.digital-light .digital-numbers .dot{
+  color: var(--color-dig-light);
+}
+.number{
+  position: relative;
+  width: 60px;
+  height: 95px;
+  font-size: 100px;
+}
+.number .d1,
+.number .d2,
+.number .d3,
+.number .d4,
+.number .d5,
+.number .d6,
+.number .d7{
+  display: block;
+  position: absolute;
+  width: 8px;
+  height: 40px;
+  transition: all .125s ease;
+}
+.number .d1::after,
+.number .d2::after,
+.number .d3::after,
+.number .d4::after,
+.number .d5::after,
+.number .d6::after,
+.number .d7::after{
+  content: '';
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  top: -7px;
+  left: 0;
+  clip-path: polygon(0 0, 0% 100%, 100% 100%);
+  transition: all .125s ease;
+}
+.number .d1::before,
+.number .d2::before,
+.number .d3::before,
+.number .d4::before,
+.number .d5::before,
+.number .d6::before,
+.number .d7::before{
+  content: '';
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  clip-path: polygon(0 0,100%  0%, 0% 100%);
+  transition: all .125s ease;
+}
+.number .d7::after{
+  clip-path: polygon(0 100%, 100% 100%, 50% 0%);
+}
+.number .d7::before{
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+/*Posicionando los .d#*/
+.number .d1{
+  top:0;
+  left:0;
+}
+.number .d2{
+  bottom:0;
+  left:0;
+}
+.number .d3{
+  top: 0;
+  right: 0;
+  transform: rotate(180deg);
+}
+.number .d4{
+  bottom: 0;
+  right: 0;
+  transform: rotate(180deg);
+}
+.number .d5{
+  top: -22px;
+  left: 7px;
+  transform: rotate(90deg) translate(-50%,-50%);
+}
+.number .d6{
+  bottom: -22px;
+  left: 7px;
+  transform: rotate(-90deg) translate(-50%,50%);
+}
+.number .d7{
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+/*Modo dark*/
+/*Mostrar el 0*/
+.digital.digital-dark .digital-numbers .show-0 .d1,
+.digital.digital-dark .digital-numbers .show-0 .d1::after,
+.digital.digital-dark .digital-numbers .show-0 .d1::before,
+.digital.digital-dark .digital-numbers .show-0 .d2,
+.digital.digital-dark .digital-numbers .show-0 .d2::after,
+.digital.digital-dark .digital-numbers .show-0 .d2::before,
+.digital.digital-dark .digital-numbers .show-0 .d3,
+.digital.digital-dark .digital-numbers .show-0 .d3::after,
+.digital.digital-dark .digital-numbers .show-0 .d3::before,
+.digital.digital-dark .digital-numbers .show-0 .d4,
+.digital.digital-dark .digital-numbers .show-0 .d4::after,
+.digital.digital-dark .digital-numbers .show-0 .d4::before,
+.digital.digital-dark .digital-numbers .show-0 .d5,
+.digital.digital-dark .digital-numbers .show-0 .d5::after,
+.digital.digital-dark .digital-numbers .show-0 .d5::before,
+.digital.digital-dark .digital-numbers .show-0 .d6,
+.digital.digital-dark .digital-numbers .show-0 .d6::after,
+.digital.digital-dark .digital-numbers .show-0 .d6::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-0 .d7,
+.digital.digital-dark .digital-numbers .show-0 .d7::after,
+.digital.digital-dark .digital-numbers .show-0 .d7::before{
+  background: var(--sombra-dig-dark);
+}
+/*Mostrar el 1*/
+.digital.digital-dark .digital-numbers .show-1 .d1,
+.digital.digital-dark .digital-numbers .show-1 .d1::after,
+.digital.digital-dark .digital-numbers .show-1 .d1::before,
+.digital.digital-dark .digital-numbers .show-1 .d2,
+.digital.digital-dark .digital-numbers .show-1 .d2::after,
+.digital.digital-dark .digital-numbers .show-1 .d2::before{
+  background: var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-1 .d3,
+.digital.digital-dark .digital-numbers .show-1 .d3::after,
+.digital.digital-dark .digital-numbers .show-1 .d3::before,
+.digital.digital-dark .digital-numbers .show-1 .d4,
+.digital.digital-dark .digital-numbers .show-1 .d4::after,
+.digital.digital-dark .digital-numbers .show-1 .d4::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-1 .d5,
+.digital.digital-dark .digital-numbers .show-1 .d5::after,
+.digital.digital-dark .digital-numbers .show-1 .d5::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-1 .d6{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-1 .d6::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-1 .d6::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-1 .d7{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-1 .d7::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-1 .d7::before{
+  background:var(--sombra-dig-dark);
+}
+/*Mostrar el 2*/
+.digital.digital-dark .digital-numbers .show-2 .d1{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d1::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d1::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d2{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d2::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d2::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d3{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d3::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d3::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d4{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d4::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d4::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d5{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d5::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d5::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d6{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d6::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d6::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d7{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d7::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-2 .d7::before{
+  background:var(--color-dig-dark);
+}
+/*Mostrar el 3*/
+.digital.digital-dark .digital-numbers .show-3 .d1{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d1::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d1::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d2{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d2::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d2::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d3{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d3::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d3::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d4{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d4::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d4::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d5{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d5::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d5::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d6{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d6::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d6::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d7{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d7::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-3 .d7::before{
+  background:var(--color-dig-dark);
+}
+/*Mostrar el 4*/
+.digital.digital-dark .digital-numbers .show-4 .d1{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d1::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d1::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d2{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d2::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d2::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d3{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d3::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d3::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d4{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d4::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d4::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d5{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d5::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d5::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d6{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d6::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d6::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d7{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d7::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-4 .d7::before{
+  background:var(--color-dig-dark);
+}
+/*Mostrar el 5*/
+.digital.digital-dark .digital-numbers .show-5 .d1{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d1::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d1::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d2{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d2::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d2::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d3{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d3::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d3::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d4{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d4::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d4::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d5{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d5::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d5::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d6{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d6::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d6::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d7{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d7::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-5 .d7::before{
+  background:var(--color-dig-dark);
+}
+/*Mostrar el 6*/
+.digital.digital-dark .digital-numbers .show-6 .d1{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d1::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d1::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d2{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d2::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d2::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d3{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d3::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d3::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d4{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d4::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d4::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d5{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d5::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d5::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d6{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d6::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d6::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d7{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d7::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-6 .d7::before{
+  background:var(--color-dig-dark);
+}
+/*Mostrar el 7*/
+.digital.digital-dark .digital-numbers .show-7 .d1{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d1::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d1::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d2{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d2::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d2::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d3{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d3::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d3::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d4{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d4::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d4::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d5{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d5::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d5::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d6{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d6::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d6::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d7{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d7::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-7 .d7::before{
+  background:var(--sombra-dig-dark);
+}
+/*Mostrar el 8*/
+.digital.digital-dark .digital-numbers .show-8 .d1{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d1::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d1::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d2{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d2::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d2::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d3{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d3::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d3::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d4{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d4::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d4::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d5{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d5::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d5::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d6{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d6::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d6::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d7{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d7::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-8 .d7::before{
+  background:var(--color-dig-dark);
+}
+/*Mostrar el 9*/
+.digital.digital-dark .digital-numbers .show-9 .d1{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d1::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d1::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d2{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d2::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d2::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d3{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d3::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d3::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d4{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d4::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d4::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d5{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d5::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d5::before{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d6{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d6::after{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d6::before{
+  background:var(--sombra-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d7{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d7::after{
+  background:var(--color-dig-dark);
+}
+.digital.digital-dark .digital-numbers .show-9 .d7::before{
+  background:var(--color-dig-dark);
+}
+/*Modo light*/
+/*Mostrar el 0*/
+.digital.digital-light .digital-numbers .show-0 .d1{
+  background: var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d1::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d1::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d2{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d2::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d2::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d3{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d3::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d3::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d4{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d4::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d4::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d5{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d5::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d5::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d6{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d6::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d6::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d7{
+  background: var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d7::after{
+  background: var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-0 .d7::before{
+  background: var(--sombra-dig-light);
+}
+/*Mostrar el 1*/
+.digital.digital-light .digital-numbers .show-1 .d1{
+  background: var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d1::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d1::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d2{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d2::after{
+  background: var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d2::before{
+  background: var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d3{
+  background: var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d3::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d3::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d4{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d4::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d4::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d5{
+    background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d5::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d5::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d6{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d6::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d6::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d7{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d7::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-1 .d7::before{
+  background:var(--sombra-dig-light);
+}
+/*Mostrar el 2*/
+.digital.digital-light .digital-numbers .show-2 .d1{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d1::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d1::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d2{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d2::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d2::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d3{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d3::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d3::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d4{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d4::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d4::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d5{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d5::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d5::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d6{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d6::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d6::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d7{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d7::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-2 .d7::before{
+  background:var(--color-dig-light);
+}
+/*Mostrar el 3*/
+.digital.digital-light .digital-numbers .show-3 .d1{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d1::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d1::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d2{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d2::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d2::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d3{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d3::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d3::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d4{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d4::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d4::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d5{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d5::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d5::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d6{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d6::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d6::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d7{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d7::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-3 .d7::before{
+  background:var(--color-dig-light);
+}
+/*Mostrar el 4*/
+.digital.digital-light .digital-numbers .show-4 .d1{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d1::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d1::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d2{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d2::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d2::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d3{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d3::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d3::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d4{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d4::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d4::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d5{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d5::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d5::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d6{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d6::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d6::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d7{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d7::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-4 .d7::before{
+  background:var(--color-dig-light);
+}
+/*Mostrar el 5*/
+.digital.digital-light .digital-numbers .show-5 .d1{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d1::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d1::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d2{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d2::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d2::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d3{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d3::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d3::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d4{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d4::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d4::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d5{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d5::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d5::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d6{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d6::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d6::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d7{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d7::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-5 .d7::before{
+  background:var(--color-dig-light);
+}
+/*Mostrar el 6*/
+.digital.digital-light .digital-numbers .show-6 .d1{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d1::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d1::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d2{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d2::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d2::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d3{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d3::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d3::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d4{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d4::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d4::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d5{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d5::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d5::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d6{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d6::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d6::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d7{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d7::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-6 .d7::before{
+  background:var(--color-dig-light);
+}
+/*Mostrar el 7*/
+.digital.digital-light .digital-numbers .show-7 .d1{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d1::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d1::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d2{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d2::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d2::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d3{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d3::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d3::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d4{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d4::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d4::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d5{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d5::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d5::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d6{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d6::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d6::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d7{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d7::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-7 .d7::before{
+  background:var(--sombra-dig-light);
+}
+/*Mostrar el 8*/
+.digital.digital-light .digital-numbers .show-8 .d1{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d1::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d1::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d2{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d2::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d2::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d3{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d3::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d3::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d4{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d4::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d4::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d5{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d5::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d5::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d6{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d6::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d6::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d7{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d7::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-8 .d7::before{
+  background:var(--color-dig-light);
+}
+/*Mostrar el 9*/
+.digital.digital-light .digital-numbers .show-9 .d1{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d1::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d1::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d2{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d2::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d2::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d3{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d3::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d3::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d4{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d4::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d4::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d5{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d5::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d5::before{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d6{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d6::after{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d6::before{
+  background:var(--sombra-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d7{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d7::after{
+  background:var(--color-dig-light);
+}
+.digital.digital-light .digital-numbers .show-9 .d7::before{
+  background:var(--color-dig-light);
+}
